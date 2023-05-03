@@ -108,7 +108,7 @@ class _MyProjectState extends State<MyProject> {
               projetCard(
                   'FLUTTER', 'ToDo List', 'A ToDo Application.', '5', 'https://github.com/aalexsd/To-Do-List'),
               projetCard(
-                  'FLUTTER', 'Journal', 'A Journal Application.', '7', 'https://github.com/aalexsd/Projeto_Diario'),
+                  'FLUTTER', 'Journal', 'A Journal Application using API.', '7', 'https://github.com/aalexsd/Projeto_Diario'),
               projetCard('FLUTTER', 'CleanApp', 'An app to control cleaning', '4', 'https://github.com/aalexsd/projeto-limpeza'),
               projetCard('FLUTTER', 'MobFlix', 'A Netflix Clone', '3', 'https://github.com/aalexsd/MobFlix'),
               projetCard('FLUTTER', 'Linkedin Clone', 'A Linkedin Clone', '3', 'https://github.com/aalexsd/linkedin-clone'),

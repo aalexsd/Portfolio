@@ -10,34 +10,34 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
-  aboutAchivements(num, type) {
+  Widget aboutAchivements(String num, String type) {
     return Row(
       children: [
-        Text(num,
-            style: const TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              fontFamily: "Soho",
-            )),
-        Container(
-            margin: const EdgeInsets.only(top: 10),
-            child: Text(
-              type,
-              style: const TextStyle(
-                fontFamily: "Soho",
-              ),
-            ))
+        Text(
+          num,
+          style: const TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Soho",
+          ),
+        ),
+        Text(
+          type,
+          style: const TextStyle(
+            fontFamily: "Soho",
+          ),
+        )
       ],
     );
   }
 
-  mySpec(icon, text) {
+  Widget mySpec(IconData icon, String text) {
     return SizedBox(
       height: 150,
       width: 160,
       child: Card(
         margin: const EdgeInsets.all(0),
-        color: const Color(0xff252525),
+        color: kCardColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
@@ -54,7 +54,10 @@ class _MyHomeState extends State<MyHome> {
             Text(
               text,
               style: const TextStyle(
-                  fontSize: 16, fontFamily: "Soho", color: Colors.white),
+                fontSize: 16,
+                fontFamily: "Soho",
+                color: Colors.white,
+              ),
             ),
           ],
         ),
@@ -62,113 +65,100 @@ class _MyHomeState extends State<MyHome> {
     );
   }
 
+  static const kBackgroundColor = Colors.black;
+  static const kCardColor = Color(0xff252525);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: Colors.black,
+      backgroundColor: kBackgroundColor,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: PopupMenuButton(
-            color: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(7),
-            ),
-            icon: const Icon(Icons.menu),
-            itemBuilder: (context) => [
-                  PopupMenuItem(
-                    value: 1,
-                    child: TextButton(
-                        child: const Text(
-                          'Projetos',
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/project');
-                        }),
+          color: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(7),
+          ),
+          icon: const Icon(Icons.menu),
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              value: 1,
+              child: TextButton(
+                child: const Text(
+                  'Projetos',
+                  style: TextStyle(
+                    color: Colors.black,
                   ),
-                  PopupMenuItem(
-                    value: 2,
-                    child: TextButton(
-                        child: const Text(
-                          'Sobre mim',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/about');
-                        }),
-                  ),
-              PopupMenuItem(
-                value: 2,
-                child: TextButton(
-                    child: const Text(
-                      'Contatos',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/contact');
-                    }),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/project');
+                },
               ),
-                ]),
+            ),
+            PopupMenuItem(
+              value: 2,
+              child: TextButton(
+                child: const Text(
+                  'Sobre mim',
+                  style: TextStyle(color: Colors.black),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/about');
+                },
+              ),
+            ),
+            PopupMenuItem(
+              value: 3,
+              child: TextButton(
+                child: const Text(
+                  'Contatos',
+                  style: TextStyle(color: Colors.black),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/contact');
+                },
+              ),
+            ),
+          ],
+        ),
       ),
       body: SlidingSheet(
-        elevation: 1,
-        cornerRadius: 50,
-        snapSpec: const SnapSpec(
-          // Enable snapping. This is true by default.
-          // Set custom snapping points.
-          snappings: [0.38, 0.7, 1.0],
-          // Define to what the snappings relate to. In this case,
-          // the total available space that the sheet can expand to.
-        ),
-        // The body widget will be displayed under the SlidingSheet
-        // and a parallax effect can be applied to it.
+        cornerRadius: 40,
         body: Container(
           alignment: Alignment.topCenter,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: const [
-              SizedBox(
-                height: 120,
-              ),
+              SizedBox(height: 120),
               CircleAvatar(
                 radius: 80,
-                backgroundImage: AssetImage('assets/images/avatar.png'),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Text(
-                'Olá, meu nome é',
-                style: TextStyle(color: Colors.white, fontSize: 22),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text('Alex Duarte',
+                backgroundImage: AssetImage('assets/images/avatar.png')),
+              SizedBox(height: 30),
+                Text(
+                  'Olá, meu nome é',
+                  style: TextStyle(color: Colors.white, fontSize: 22),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'Alex Duarte',
                   style: TextStyle(
                       fontFamily: "Soho",
                       color: Colors.white,
                       fontSize: 40,
-                      fontWeight: FontWeight.bold)),
-              SizedBox(
-                height: 2,
-              ),
-              Text(
-                'Desenvolvedor Mobile | Flutter',
-                style: TextStyle(
-                    color: Colors.white, fontFamily: "Soho", fontSize: 20),
-              ),
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  'Desenvolvedor Mobile | Flutter',
+                  style: TextStyle(
+                      color: Colors.white, fontFamily: "Soho", fontSize: 20),
+                ),
             ],
           ),
         ),
         builder: (context, state) {
-          // This is the content of the sheet that will get
-          // scrolled, if the content is bigger than the available
-          // height of the sheet.
           return Container(
             alignment: AlignmentDirectional.topCenter,
             margin: const EdgeInsets.only(left: 20, top: 30, right: 20),
@@ -184,17 +174,18 @@ class _MyHomeState extends State<MyHome> {
                   ],
                 ),
                 const Padding(
-                  padding: EdgeInsets.only(top: 20.0),
+                  padding: EdgeInsets.only(top: 20),
                   child: Text(
                     'Especializado em',
                     style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: "Soho",
-                        fontWeight: FontWeight.bold),
+                      fontSize: 20,
+                      fontFamily: "Soho",
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
+                  padding: const EdgeInsets.only(top: 10),
                   child: Column(
                     children: [
                       Row(
@@ -205,7 +196,7 @@ class _MyHomeState extends State<MyHome> {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 10.0),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -215,7 +206,7 @@ class _MyHomeState extends State<MyHome> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 10.0),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [

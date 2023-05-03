@@ -104,7 +104,7 @@ class _ContactsState extends State<Contacts> {
                 ),
                 IconButton(
                   onPressed: () async {
-                    var url = Uri.parse('https://www.linkedin.com/in/alex-sduarte/');
+                    var url = Uri.parse('https://www.linkedin.com/in/alex-sduarte');
                     launchUrl(url);
                   },
                   icon: const Icon(
