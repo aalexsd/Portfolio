@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/cupertino.dart';
 
 class Contacts extends StatefulWidget {
   const Contacts({Key? key}) : super(key: key);
@@ -46,17 +47,55 @@ class _ContactsState extends State<Contacts> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+
+                CupertinoButton(
+                  onPressed: () {
+                    showCupertinoDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return CupertinoAlertDialog(
+                          title: const Text('Phone Number'),
+                          content: const Text('+5561983449808'),
+                          actions: [
+                            CupertinoDialogAction(
+                              child: const Text('CALL'),
+                              onPressed: () async {
+                                Navigator.of(context).pop();
+                                const phoneUrl = 'tel:+5561983449808';
+                                if (await canLaunchUrl(phoneUrl as Uri)) {
+                                  await launchUrl(phoneUrl as Uri);
+                                } else {
+                                  throw 'Could not launch $phoneUrl';
+                                }
+                              },
+                            ),
+                            CupertinoDialogAction(
+                              child: const Text('CANCEL'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  child: const Icon(
+                    FontAwesomeIcons.phone,
+                    color: CupertinoColors.white,
+                  ),
+                ),
                 IconButton(
                   onPressed: () async {
-                    final Uri emailLaunchUri = Uri(
+                    var url = Uri(
                       scheme: 'mailto',
                       path: 'alexduarteduartesilva@gmail.com',
+                      queryParameters: {
+                        'subject': 'Hi Alex!',
+                        'body': 'Type your message here!'
+                      },
                     );
-
-                    if (await canLaunchUrl(emailLaunchUri.toString() as Uri)) {
-                      await launchUrl(emailLaunchUri.toString() as Uri);
-                    } else {
-                    }
+                    launchUrl(url);
                   },
                   icon: const Icon(
                     FontAwesomeIcons.solidEnvelope,
