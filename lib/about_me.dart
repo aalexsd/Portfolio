@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -18,84 +17,40 @@ class _MyAppState extends State<MyApp> {
         backgroundColor: Colors.transparent,
       ),
       backgroundColor: Colors.black,
-      body: Stack(
-        children: [
-          Container(
-            margin: const EdgeInsets.only(top: 60),
-            child: ShaderMask(
-              shaderCallback: (rect) {
-                return const LinearGradient(
-                  begin: Alignment.center,
-                  end: Alignment.bottomCenter,
-                  colors: [Colors.black, Colors.transparent],
-                ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
-              },
-              blendMode: BlendMode.dstIn,
-              child: Image.asset(
-                'assests/bnw.png',
-                height: 400,
-                fit: BoxFit.contain,
+      body: SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.topCenter,
+          child: Column(
+            children: const [
+              SizedBox(
+                height: 120,
               ),
-            ),
+              Text(
+                'Olá, meu nome é',
+                style: TextStyle(color: Colors.white, fontSize: 30),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text('Alex Duarte',
+                  style: TextStyle(color: Colors.white, fontSize: 40)),
+              SizedBox(
+                height: 50,
+              ),
+              Text(
+                'E aí, pessoal! Sou um entusiasta de tecnologia! Com 22 anos de idade, já tenho 5 anos de experiência no mercado de tecnologia - posso dizer que já vi um pouco de tudo nessa área.\n'
+                    '\nE durante esse percurso, percebi que a minha verdadeira vocação é programar em mobile, especialmente em Flutter. Me amarro na maneira como ele torna a criação de aplicativos móveis elegante e eficiente. Para mim, programar em Flutter é como construir uma casa com Lego - divertido e desafiador ao mesmo tempo.\n'
+                    '\nAlém disso, sou uma pessoa tranquila, sempre aberta a novas ideias e gosto de trabalhar em equipe. Gosto de aprender e me aperfeiçoar sempre que posso - por isso, estou sempre procurando novos desafios e oportunidades para crescer.\n'
+                    '\nEntão, se você está procurando um desenvolvedor mobile com muita vontade e dedicação, é só me chamar que eu estou pronto para ajudar!',
+                textAlign: TextAlign.justify,
+                style: TextStyle(fontSize: 22, color: Colors.white),
+              ),
+              SizedBox(
+                height: 50,
+              )
+            ],
           ),
-          Container(
-            alignment: Alignment.center,
-            margin: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * 0.55),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  'Olá, meu nome é',
-                  style: TextStyle(color: Colors.white, fontSize: 30),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text('Alex Duarte',
-                    style: TextStyle(color: Colors.white, fontSize: 40)),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  'Desenvolvedor Mobile | Flutter',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          FontAwesomeIcons.solidEnvelope,
-                          color: Colors.white,
-                        )),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          FontAwesomeIcons.linkedin,
-                          color: Colors.white,
-                        )),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          FontAwesomeIcons.github,
-                          color: Colors.white,
-                        )),
-                  ],
-                )
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
